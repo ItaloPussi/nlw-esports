@@ -3,15 +3,16 @@ import './styles/main.css'
 import logoImg from './assets/logo-nlw-esports.svg'
 import { GameCard, GameProps } from './components/GameCard'
 import { CreateAdModal } from './components/CreateAdModal'
+import { CreateAdBanner } from './components/CreateAdBanner'
+import { Root } from '@radix-ui/react-dialog'
+import axios from 'axios'
 
 function App() {
   const [games, setGames] = useState<GameProps[]>([])
 
   useEffect(() => {
-    fetch("http://192.168.0.28:3333/games")
-    .then(data => data.json())
-    .catch()
-    .then(data => setGames(data))
+    axios("http://192.168.0.28:3333/games")
+    .then(response => setGames(response.data))
   }, [])
   return (
     <div className='max-w-[1344px] mx-auto flex items-center flex-col my-5 2xl:my-20'>
@@ -29,7 +30,11 @@ function App() {
         ))}
       </div>
 
-      <CreateAdModal games={games}/>
+      <Root>
+        <CreateAdBanner />
+        <CreateAdModal games={games}/>
+      </Root>
+      
 
     </div>
   )
