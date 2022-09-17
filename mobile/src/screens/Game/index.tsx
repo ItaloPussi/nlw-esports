@@ -10,6 +10,7 @@ import { GameProps } from '../../components/GameCard';
 import { THEME } from '../../theme';
 import { Heading } from '../../components/Heading';
 import { AdProps, DuoCard } from '../../components/DuoCard';
+import { DuoMatch } from '../../components/DuoMatch';
 
 export function Game() {
   const route = useRoute()
@@ -19,8 +20,26 @@ export function Game() {
 
   const [ads, setAds] = useState<AdProps[]>([])
 
+  const [selectedAdDiscord, setSelectedAdDiscord] = useState("")
+  const [showDiscordModal, setShowDiscordModal] = useState(false)
+  
   function handleGoBack(){
     navigation.goBack()
+  }
+
+  async function openDiscordModal(adId: string){
+    fetch(`http://192.168.0.28:3333/ads/${adId}/discord`)
+    .then(data => data.json())
+    .catch(err => console.log(err))
+    .then(data => {
+      setSelectedAdDiscord(data.discord)
+      setShowDiscordModal(true)
+    })
+  }
+
+  function closeDiscordModal(){
+    setSelectedAdDiscord("")
+    setShowDiscordModal(false)
   }
 
   useEffect(() => {
@@ -70,7 +89,7 @@ export function Game() {
             renderItem={({item}) => (
               <DuoCard 
                 data={item}
-                onConnect={() => {}}
+                onConnect={() => openDiscordModal(item.id)}
               />
             )}
             contentContainerStyle={ads.length === 0 ? styles.emptyListContent : styles.contentList}
@@ -82,6 +101,12 @@ export function Game() {
                 Não há anúncios publicados ainda.
               </Text>
             )}
+          />
+
+          <DuoMatch 
+            visible={showDiscordModal}
+            discord={selectedAdDiscord}
+            onClose={closeDiscordModal}
           />
         </SafeAreaView>
     </Background>
