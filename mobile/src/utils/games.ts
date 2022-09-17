@@ -1,38 +1,50 @@
 export const GAMES = [
   {
     id: '1',
-    name: 'League of Legends',
-    ads: '4',
-    cover: require('../assets/games/game-1.png')
+    title: 'League of Legends',
+    cover: require('../assets/games/game-1.png'),
+    _count: {
+      ads: 4
+    }
   },
   {
     id: '2',
-    name: 'Dota 2',
-    ads: '3',
-    cover: require('../assets/games/game-2.png')
+    title: 'Dota 2',
+    cover: require('../assets/games/game-2.png'),
+    _count: {
+      ads: 3
+    }
   },
   {
     id: '3',
-    name: 'CS-GO',
-    ads: '2',
-    cover: require('../assets/games/game-3.png')
+    title: 'CS-GO',
+    cover: require('../assets/games/game-3.png'),
+    _count: {
+      ads: 2
+    }
   },
   {
     id: '4',
-    name: 'Apex',
-    ads: '3',
-    cover: require('../assets/games/game-4.png')
+    title: 'Apex',
+    cover: require('../assets/games/game-4.png'),
+    _count: {
+      ads: 3
+    }
   },
   {
     id: '5',
-    name: 'Fortnite',
-    ads: '5',
-    cover: require('../assets/games/game-5.png')
+    title: 'Fortnite',
+    cover: require('../assets/games/game-5.png'),
+    _count: {
+      ads: 5
+    }
   },
   {
     id: '6',
-    name: 'World of Warcraft',
-    ads: '2',
-    cover: require('../assets/games/game-6.png')
+    title: 'World of Warcraft',
+    cover: require('../assets/games/game-6.png'),
+    _count: {
+      ads: 2
+    }
   },
 ];
