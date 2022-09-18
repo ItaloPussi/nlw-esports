@@ -8,6 +8,8 @@ import { GameCard, GameProps } from '../../components/GameCard';
 import { Background } from '../../components/Background';
 import { GAMES } from '../../utils/games';
 import logoImg from '../../assets/logo-nlw-esports.png'
+import { ButtonIcon } from '../../components/ButtonIcon';
+import { Lightning } from 'phosphor-react-native';
 
 export function Home() {
   const navigation = useNavigation()
@@ -19,6 +21,10 @@ export function Home() {
       .catch()
       .then(data => setGames(data))
   }, []) 
+
+  function handleCreateDuo(){
+    navigation.navigate("createduo")
+  }
 
   function handleOpenGame(item: GameProps){
     navigation.navigate('game', item)
@@ -49,6 +55,13 @@ export function Home() {
           contentContainerStyle={styles.contentList}
           horizontal
           showsHorizontalScrollIndicator={false}
+        />
+
+        <ButtonIcon 
+          title="Buscar meu próprio DUO"
+          onPress={handleCreateDuo}
+          Icon={Lightning}
+          height={52}
         />
       </SafeAreaView>
     </Background>

@@ -6,22 +6,6 @@ export const styles = StyleSheet.create({
     flex: 1,
     alignItems: 'center'
   },
-  header: {
-    width: '100%',
-    flexDirection: 'row',
-    alignItems: 'center',
-    justifyContent: 'space-between',
-    paddingHorizontal: 32,
-    marginTop: 38
-  },
-  logo: {
-    width: 72,
-    height: 40
-  },
-  right: {
-    width: 20,
-    height: 20
-  },
   cover: {
     width: 311,
     height: 160,

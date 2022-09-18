@@ -1,32 +1,24 @@
 import { useState, useEffect } from 'react';
-import { SafeAreaView, TouchableOpacity, View, Image, FlatList, Text } from 'react-native';
-import { useNavigation, useRoute } from '@react-navigation/native'
-import { Entypo } from "@expo/vector-icons"
+import { SafeAreaView, Image, FlatList, Text } from 'react-native';
+import { useRoute } from '@react-navigation/native'
 
-import logoImg from '../../assets/logo-nlw-esports.png'
 import { Background } from '../../components/Background';
 import { styles } from './styles';
 import { GameProps } from '../../components/GameCard';
-import { THEME } from '../../theme';
 import { Heading } from '../../components/Heading';
 import { AdProps, DuoCard } from '../../components/DuoCard';
 import { DuoMatch } from '../../components/DuoMatch';
+import { Header } from '../../components/Header';
 
 export function Game() {
   const route = useRoute()
   const game = route.params as GameProps
-
-  const navigation = useNavigation()
 
   const [ads, setAds] = useState<AdProps[]>([])
 
   const [selectedAdDiscord, setSelectedAdDiscord] = useState("")
   const [showDiscordModal, setShowDiscordModal] = useState(false)
   
-  function handleGoBack(){
-    navigation.goBack()
-  }
-
   async function openDiscordModal(adId: string){
     fetch(`http://192.168.0.28:3333/ads/${adId}/discord`)
     .then(data => data.json())
@@ -54,30 +46,15 @@ export function Game() {
   return (
     <Background>
         <SafeAreaView style={styles.container}>
-          <View style={styles.header}>
-            <TouchableOpacity
-              onPress={handleGoBack}
-            >
-              <Entypo 
-                name='chevron-thin-left'
-                color={THEME.COLORS.CAPTION_300}
-                size={20}
-              />
-            </TouchableOpacity>
-
-            <Image 
-              source={logoImg}
-              style={styles.logo}
-            />
-
-            <View style={styles.right}/>
-          </View>
+          
+          <Header />
 
           <Image 
             source={game.bannerUrl ? {uri: game.bannerUrl} : game.cover}
             style={styles.cover}
             resizeMode="cover"
           />
+          
           <Heading 
             title={game.title}
             subtitle="Conecte-se e comece a jogar!"

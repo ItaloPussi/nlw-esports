@@ -4,7 +4,8 @@ export declare global {
     namespace ReactNavigation {
         interface RootParamList {
             home: undefined,
-            game: GameProps
+            game: GameProps,
+            createduo: undefined
         }
     }
 }
