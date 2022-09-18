@@ -13,14 +13,14 @@ export const styles = StyleSheet.create({
         fontFamily: THEME.FONT_FAMILY.SEMI_BOLD,
         fontSize: THEME.FONT_SIZE.SM
     },
-    input: {
-        flex: 1,
+    pickerContainer: {
         height: 50,
-        padding: 8,
-        borderWidth: 0.5,
+        borderWidth: 1,
         borderColor: THEME.COLORS.CAPTION_500,
-        color: THEME.COLORS.TEXT,
         marginBottom: 16,
-        marginTop: 8
+    },
+    picker: { 
+        flex: 1,
+        color: THEME.COLORS.TEXT,
     }
-});
+}); 

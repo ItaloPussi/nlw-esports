@@ -5,7 +5,7 @@ export declare global {
         interface RootParamList {
             home: undefined,
             game: GameProps,
-            createduo: undefined
+            createduo: GameProps[]
         }
     }
 }

@@ -9,6 +9,7 @@ import { Heading } from '../../components/Heading';
 import { AdProps, DuoCard } from '../../components/DuoCard';
 import { DuoMatch } from '../../components/DuoMatch';
 import { Header } from '../../components/Header';
+import { Axios } from '../../services/axios';
 
 export function Game() {
   const route = useRoute()
@@ -20,13 +21,12 @@ export function Game() {
   const [showDiscordModal, setShowDiscordModal] = useState(false)
   
   async function openDiscordModal(adId: string){
-    fetch(`http://192.168.0.28:3333/ads/${adId}/discord`)
-    .then(data => data.json())
-    .catch(err => console.log(err))
-    .then(data => {
-      setSelectedAdDiscord(data.discord)
+    Axios.get(`/ads/${adId}/discord`)
+    .then(response => {
+      setSelectedAdDiscord(response.data.discord)
       setShowDiscordModal(true)
     })
+    .catch(err => console.log(err))
   }
 
   function closeDiscordModal(){
@@ -37,10 +37,9 @@ export function Game() {
   useEffect(() => {
     if(!game) return
 
-    fetch(`http://192.168.0.28:3333/games/${game.id}/ads`)
-      .then(response => response.json())
+    Axios.get(`/games/${game.id}/ads`)
+      .then(response => setAds(response.data))
       .catch()
-      .then(data => setAds(data))
   }, [game])
 
   return (

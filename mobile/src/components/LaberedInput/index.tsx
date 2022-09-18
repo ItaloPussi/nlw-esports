@@ -3,7 +3,7 @@ import { View, Text, TextInput, TextInputProps } from 'react-native';
 import { THEME } from '../../theme';
 import { styles } from './styles';
 
-interface LaberedInputProps extends TextInputProps {
+export interface LaberedInputProps extends TextInputProps {
     label: string;
 }
 

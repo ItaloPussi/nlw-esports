@@ -2,14 +2,9 @@ import { StyleSheet } from 'react-native';
 import { THEME } from '../../theme';
 
 export const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-  },
   content: {
-    marginHorizontal: 32,
+    paddingHorizontal: 32,
     marginTop: 16,
-    flex: 1,
-    alignItems:'center',
   },
   title: {
     width: '100%',
@@ -26,15 +21,6 @@ export const styles = StyleSheet.create({
   inputGroup: {
     flex: 1,
   },
-  checkbox: {
-    width: '100%',
-    flexDirection: 'row',
-    alignItems: 'center',
-    marginBottom: 12
-  },
-  checkboxText: {
-    marginLeft: 4,
-    color: THEME.COLORS.CAPTION_300,
-    fontSize: THEME.FONT_SIZE.MD
+  test: {
   }
 });

@@ -10,25 +10,26 @@ import { GAMES } from '../../utils/games';
 import logoImg from '../../assets/logo-nlw-esports.png'
 import { ButtonIcon } from '../../components/ButtonIcon';
 import { Lightning } from 'phosphor-react-native';
+import { Axios } from '../../services/axios';
 
 export function Home() {
   const navigation = useNavigation()
   const [games, setGames] = useState<GameProps[]>([])
 
   useEffect(() => {
-    fetch('http://192.168.0.28:3333/games')
-      .then(response => response.json())
+    Axios.get('/games')
+      .then(response => setGames(response.data))
       .catch()
-      .then(data => setGames(data))
   }, []) 
 
   function handleCreateDuo(){
-    navigation.navigate("createduo")
+    navigation.navigate("createduo", games)
   }
 
   function handleOpenGame(item: GameProps){
     navigation.navigate('game', item)
   }
+
   return (
     <Background>
       <SafeAreaView style={styles.container}>
